@@ -13,3 +13,12 @@ Feature: Login to app
     Given I am on the login page
     When I login as a student
     Then books should be displayed
+
+
+  @librarianParam
+  Scenario: Login as librarian 49
+    Given I am on the login page
+    When I log in using "librarian13@library" and "libraryUser"
+    And there should be 191 users
+    Then dashboard should be displayed
+      #number can be whatever you have there

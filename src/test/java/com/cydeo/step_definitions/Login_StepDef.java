@@ -1,9 +1,11 @@
 package com.cydeo.step_definitions;
 
+import com.cydeo.pages.DashboardPage;
 import com.cydeo.pages.LoginPage;
 import com.cydeo.utilities.BrowserUtils;
 import com.cydeo.utilities.ConfigurationReader;
 import com.cydeo.utilities.Driver;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -13,6 +15,7 @@ import org.junit.Assert;
 public class Login_StepDef {
 
     LoginPage loginPage = new LoginPage();
+    DashboardPage dashboardPage = new DashboardPage();
 
     @Given("I am on the login page")
     public void i_am_on_the_login_page() {
@@ -50,5 +53,18 @@ public class Login_StepDef {
 
         BrowserUtils.waitForURLContains("books");
         Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("books"));
+    }
+
+    @When("I log in using {string} and {string}")
+    public void iLogInUsingAnd(String email, String password) {
+        loginPage.login(email,password);
+    }
+
+    @And("there should be {int} users")
+    public void thereShouldBeUsers(int expectedUserAmount) {
+
+        String actualUserAmount = dashboardPage.userAmount.getText();
+        String expectedUserCount = String.valueOf(expectedUserAmount); // expectedUserAmount+""
+        Assert.assertEquals(expectedUserCount,actualUserAmount);
     }
 }
