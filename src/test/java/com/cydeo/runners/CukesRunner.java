@@ -12,10 +12,10 @@ import org.junit.runner.RunWith;
                 "rerun:target/rerun.txt",
                 "me.jvt.cucumber.report.PrettyReports:target/cucumber"
         },
-        features = "src/test/resources/features",
-        glue = "com/cydeo/step_definitions",
-        dryRun = false,
-        tags = "@all_accounts",
+        features = "src/test/resources/features", // business layer
+        glue = "com/cydeo/step_definitions", // implementation layer
+        dryRun = true, // true: it will run only feature file
+        tags = "@librarian",
         publish = true //generating a report with public link
 )
 public class CukesRunner {
