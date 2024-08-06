@@ -8,12 +8,11 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
 
 public class Login_StepDef {
 
-    private static final Logger log = LoggerFactory.getLogger(Login_StepDef.class);
+    LoginPage loginPage = new LoginPage();
 
     @Given("I am on the login page")
     public void i_am_on_the_login_page() {
@@ -22,11 +21,13 @@ public class Login_StepDef {
 
     @When("I login as a librarian")
     public void i_login_as_a_librarian() {
-     LoginPage loginPage = new LoginPage();
 
-     loginPage.emailInput.sendKeys(ConfigurationReader.getProperty("lib27_user"));
-     loginPage.passwordInput.sendKeys(ConfigurationReader.getProperty("lib27_pass"));
-     loginPage.signinBtn.click();
+
+//     loginPage.emailInput.sendKeys(ConfigurationReader.getProperty("lib27_user"));
+//     loginPage.passwordInput.sendKeys(ConfigurationReader.getProperty("lib27_pass"));
+//     loginPage.signinBtn.click();
+
+        loginPage.login(ConfigurationReader.getProperty("lib27_user"),ConfigurationReader.getProperty("lib27_pass"));
     }
 
     @Then("dashboard should be displayed")
@@ -37,5 +38,17 @@ public class Login_StepDef {
      String actualURL = Driver.getDriver().getCurrentUrl();
 
         Assert.assertTrue(actualURL.contains(expectedURL));
+    }
+
+    @When("I login as a student")
+    public void iLoginAsAStudent() {
+     loginPage.login(ConfigurationReader.getProperty("student27_user"),ConfigurationReader.getProperty("student27_pass"));
+    }
+
+    @Then("books should be displayed")
+    public void booksShouldBeDisplayed() {
+
+        BrowserUtils.waitForURLContains("books");
+        Assert.assertTrue(Driver.getDriver().getCurrentUrl().contains("books"));
     }
 }
