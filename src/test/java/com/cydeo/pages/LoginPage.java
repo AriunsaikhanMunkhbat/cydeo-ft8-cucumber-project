@@ -20,4 +20,6 @@ public class LoginPage {
     @FindBy(xpath = "//button[.='Sign in']")
     public WebElement signinBtn;
 
+
+
 }
