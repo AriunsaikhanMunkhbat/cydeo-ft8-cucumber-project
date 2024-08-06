@@ -14,9 +14,9 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features", // business layer
         glue = "com/cydeo/step_definitions", // implementation layer
-        dryRun = false, // true: it will run only feature file
+        dryRun = true, // true: it will run only feature file
                         // false: it will run both stepdef and feature file
-        tags = "@librarianParam",
+        tags = "@wip",
         publish = true //generating a report with public link
 )
 public class CukesRunner {
