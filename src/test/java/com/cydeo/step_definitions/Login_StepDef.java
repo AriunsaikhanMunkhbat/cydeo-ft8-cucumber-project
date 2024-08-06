@@ -62,7 +62,8 @@ public class Login_StepDef {
 
     @And("there should be {int} users")
     public void thereShouldBeUsers(int expectedUserAmount) {
-
+        BrowserUtils.waitForVisibility(dashboardPage.userAmount,10);
+        BrowserUtils.sleep(3);
         String actualUserAmount = dashboardPage.userAmount.getText();
         String expectedUserCount = String.valueOf(expectedUserAmount); // expectedUserAmount+""
         Assert.assertEquals(expectedUserCount,actualUserAmount);
