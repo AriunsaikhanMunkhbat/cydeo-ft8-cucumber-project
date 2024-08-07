@@ -1,6 +1,7 @@
 package com.cydeo.step_definitions;
 
 import com.cydeo.pages.UsersPage;
+import com.cydeo.utilities.BrowserUtils;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.junit.Assert;
@@ -20,7 +21,7 @@ public class Users_StepDef {
             usersPage.usersLink.click();
         }else if(link.equalsIgnoreCase("Dashboard")){
             usersPage.dashboardLink.click();
-        }else{
+        }else if(link.equalsIgnoreCase("Books")){
             usersPage.booksLink.click();
         }
 
@@ -29,14 +30,15 @@ public class Users_StepDef {
     @Then("table should have following column names:")
     public void table_should_have_following_column_names(List<String> expectedHeaders) {
 
-        List<String> actualHeaders = new ArrayList<>();
+//        List<String> actualHeaders = new ArrayList<>();
+//
+//        for (WebElement eachHeader : usersPage.tableHeaders) {
+//            actualHeaders.add(eachHeader.getText());
+//        }
+//
+//        Assert.assertEquals(expectedHeaders,actualHeaders);
 
-        for (WebElement eachHeader : usersPage.tableHeaders) {
-            actualHeaders.add(eachHeader.getText());
-        }
-
-        Assert.assertEquals(expectedHeaders,actualHeaders);
-
+        Assert.assertEquals(expectedHeaders,BrowserUtils.getElementsText(usersPage.tableHeaders));
 
     }
 }
