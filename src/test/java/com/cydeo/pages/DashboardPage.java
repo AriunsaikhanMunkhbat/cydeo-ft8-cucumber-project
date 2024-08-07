@@ -5,7 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class DashboardPage {
+public class DashboardPage extends  BasePage{
 
     public DashboardPage(){
         PageFactory.initElements(Driver.getDriver(),this);

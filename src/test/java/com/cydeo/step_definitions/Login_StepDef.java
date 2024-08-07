@@ -68,4 +68,10 @@ public class Login_StepDef {
         String expectedUserCount = String.valueOf(expectedUserAmount); // expectedUserAmount+""
         Assert.assertEquals(expectedUserCount,actualUserAmount);
     }
+
+    @Then("account holder name should be {string}")
+    public void accountHolderNameShouldBe(String expectedAccountName) {
+     String actualAccountName = dashboardPage.userInfo.getText();
+     Assert.assertEquals(expectedAccountName,actualAccountName);
+    }
 }
