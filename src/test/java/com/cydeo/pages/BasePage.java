@@ -5,6 +5,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+// This class is abstract because we don't want any other class to create object from that
 public abstract class BasePage {
 
     public BasePage(){

@@ -14,9 +14,15 @@ public class Users_StepDef {
     UsersPage usersPage = new UsersPage();
 
     @Given("I click on {string} link")
-    public void i_click_on_link(String string) {
+    public void i_click_on_link(String link) {
 
-        usersPage.usersLink.click();
+        if(link.equalsIgnoreCase("Users")){
+            usersPage.usersLink.click();
+        }else if(link.equalsIgnoreCase("Dashboard")){
+            usersPage.dashboardLink.click();
+        }else{
+            usersPage.booksLink.click();
+        }
 
     }
 
