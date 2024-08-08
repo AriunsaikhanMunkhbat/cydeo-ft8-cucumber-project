@@ -76,4 +76,12 @@ public class Login_StepDef {
      String actualAccountName = dashboardPage.userInfo.getText();
      Assert.assertEquals(expectedAccountName,actualAccountName);
     }
+
+
+    @When("user enters the librarian information from the environment")
+    public void userEntersTheLibrarianInformationFromTheEnvironment() {
+        String username=System.getenv("LIBRARY_USER");
+        String password=System.getenv("LIBRARY_PASSWORD");
+        loginPage.login(username,password);
+    }
 }

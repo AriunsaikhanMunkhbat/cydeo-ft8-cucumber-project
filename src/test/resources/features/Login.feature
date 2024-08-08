@@ -49,3 +49,10 @@ Feature: Login to app
       | librarian15@library | libraryUser | Test Librarian 15 |
       | librarian16@library | libraryUser | Test Librarian 16 |
       | librarian17@library | libraryUser | Test Librarian 17 |
+
+
+  @envData
+  Scenario: Login as librarian with env variables
+
+    When user enters the librarian information from the environment
+    Then dashboard should be displayed
