@@ -1,23 +1,26 @@
 
 Feature: Login to app
 
+  Background:
+    Given I am on the login page
+
   @librarian
   Scenario: Login as a librarian
-    Given I am on the login page
+   # Given I am on the login page
     When I login as a librarian
     Then dashboard should be displayed
 
 
   @student
   Scenario: Login as a student
-    Given I am on the login page
+  #  Given I am on the login page
     When I login as a student
     Then books should be displayed
 
 
   @librarianParam
   Scenario: Login as librarian 49
-    Given I am on the login page
+   # Given I am on the login page
     When I log in using "librarian13@library" and "libraryUser"
     And there should be 191 users
     Then dashboard should be displayed
@@ -26,7 +29,7 @@ Feature: Login to app
 
   @all_accounts
   Scenario Outline: Verify user information <email>
-    Given I am on the login page
+  #  Given I am on the login page
     When I log in using "<email>" and "<password>"
     Then account holder name should be "<name>"
 
