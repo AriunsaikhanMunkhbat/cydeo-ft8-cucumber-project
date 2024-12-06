@@ -4,6 +4,13 @@ Feature: Login to app
   Background:
     Given I am on the login page
 
+  @myself
+  Scenario: Login as a myself
+   # Given I am on the login page
+    When I login as a myself
+    Then dashboard should be displayed
+
+
   @librarian @smoke
   Scenario: Login as a librarian
    # Given I am on the login page

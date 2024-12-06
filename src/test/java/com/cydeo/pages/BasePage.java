@@ -23,4 +23,16 @@ public abstract class BasePage {
 
     @FindBy(css = "a#navbarDropdown>span")
     public WebElement userInfo;
+
+    // @FindBy(linkText = "Users")
+    // public WebElement usersLink;
+
+    // @FindBy(linkText = "Dashboard")
+    // public WebElement dashboardLink;
+
+    // @FindBy(linkText = "Books")
+    // public WebElement booksLink;
+
+    // @FindBy(css = "a#navbarDropdown>span")
+    // public WebElement userInfo;
 }
