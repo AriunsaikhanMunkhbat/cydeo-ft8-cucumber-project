@@ -2,7 +2,12 @@ package com.cydeo.utilities;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.chrome.ChromeOptions;
+
 
 import java.time.Duration;
 
@@ -39,13 +44,25 @@ public class Driver {
              */
             switch (browserType){
                 case "chrome":
-                    //WebDriverManager.chromedriver().setup();
-                    driverPool.set(new ChromeDriver());
+                    WebDriverManager.chromedriver().setup();
+
+                    ChromeOptions options = new ChromeOptions();
+
+                    // 👇 persistent profile
+                    options.addArguments("user-data-dir=/Users/bzolboo7/selenium-dice-profile");
+                    options.addArguments("profile-directory=Default");
+
+                    // optional but helpful
+                    options.addArguments("--disable-notifications");
+                    options.addArguments("--disable-infobars");
+
+                    driverPool.set(new ChromeDriver(options));
                     driverPool.get().manage().window().maximize();
-                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+                    driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
                     break;
+
                 case "firefox":
-                    //WebDriverManager.firefoxdriver().setup();
+                    WebDriverManager.firefoxdriver().setup();
                     driverPool.set(new FirefoxDriver());
                     driverPool.get().manage().window().maximize();
                     driverPool.get().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
